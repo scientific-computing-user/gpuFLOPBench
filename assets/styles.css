@@ -352,6 +352,19 @@ main {
   gap: 20px;
 }
 
+.performance-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.35fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.performance-side-stack {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+
 .section-head-tight {
   margin-bottom: 14px;
 }
@@ -385,6 +398,10 @@ main {
 
 .chart.small {
   min-height: 320px;
+}
+
+.compact-chart {
+  min-height: 260px;
 }
 
 .status-grid,
@@ -503,9 +520,116 @@ main {
   justify-content: flex-end;
 }
 
+.top-detail {
+  padding: 0;
+  overflow: hidden;
+}
+
+.top-detail summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 18px;
+}
+
+.top-detail summary::-webkit-details-marker {
+  display: none;
+}
+
+.top-detail[open] summary {
+  background: rgba(145, 183, 255, 0.04);
+  border-bottom: 1px solid rgba(145, 183, 255, 0.08);
+}
+
+.top-summary-copy {
+  min-width: 0;
+}
+
+.top-summary-copy h3 {
+  margin: 12px 0 8px;
+}
+
+.top-summary-copy p {
+  margin: 0;
+}
+
+.top-summary-meta {
+  flex: 0 0 auto;
+  min-width: 88px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(145, 183, 255, 0.07);
+  text-align: right;
+}
+
+.top-summary-meta strong {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.top-summary-meta span {
+  display: block;
+  margin-top: 6px;
+  color: var(--faint);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.top-detail .note-list {
+  padding: 0 18px 18px;
+}
+
 .kernel-detail-panel,
 .citation-panel {
   padding: 22px;
+}
+
+.roofline-reference-panel {
+  padding: 18px;
+}
+
+.roofline-spec-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.roofline-spec-card {
+  padding: 16px;
+  border: 1px solid rgba(145, 183, 255, 0.12);
+  border-radius: var(--radius-md);
+  background: rgba(145, 183, 255, 0.05);
+}
+
+.roofline-spec-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.roofline-spec-head strong {
+  font-size: 15px;
+}
+
+.roofline-spec-card p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.roofline-inline-metrics {
+  margin-top: 12px;
+}
+
+.roofline-inline-metrics .inline-metric {
+  flex: 1 1 110px;
 }
 
 .short-scroll {
@@ -721,6 +845,7 @@ td span {
 @media (max-width: 1120px) {
   .hero-grid,
   .split-grid,
+  .performance-grid,
   .status-grid,
   .downloads-grid,
   .team-grid,
@@ -737,6 +862,10 @@ td span {
 
   .reading-guide .inline-metrics {
     justify-content: flex-start;
+  }
+
+  .roofline-spec-grid {
+    grid-template-columns: 1fr;
   }
 
   .citation-actions {
@@ -758,6 +887,17 @@ td span {
 
   .metric-grid {
     grid-template-columns: 1fr;
+  }
+
+  .top-detail summary {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .top-summary-meta {
+    min-width: 0;
+    width: 100%;
+    text-align: left;
   }
 
   .hero-copy,

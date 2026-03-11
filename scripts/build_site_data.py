@@ -156,7 +156,7 @@ TEAM_MEMBERS = [
     {
         "name": "Hayden Estes",
         "affiliation": "Virginia Tech",
-        "profile_url": "https://courses.cs.vt.edu/cs3214/spring2024/staff",
+        "profile_url": "https://www.linkedin.com/in/haydenvestes/",
         "image_path": "./assets/team/hayden-estes.svg",
     },
     {

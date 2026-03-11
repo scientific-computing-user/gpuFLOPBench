@@ -125,17 +125,30 @@
             </p>
           </div>
         </div>
-        <div class="split-grid">
-          <article class="chart-panel">
-            <header>
-              <div>
-                <h3>Per-device overview</h3>
-                <p>Source counts and median measured floating-point performance by GPU target.</p>
+        <div class="performance-grid">
+          <div class="performance-side-stack">
+            <article class="chart-panel">
+              <header>
+                <div>
+                  <h3>Per-device overview</h3>
+                  <p>Source counts and median measured floating-point performance by GPU target.</p>
+                </div>
+              </header>
+              <div class="chart compact-chart" id="devicePerfChart" data-fallback="device performance"></div>
+            </article>
+            <article class="panel roofline-reference-panel">
+              <div class="section-head section-head-tight">
+                <div>
+                  <h3>Default-clock roofline reference</h3>
+                  <p id="rooflineReferenceSummary" class="muted">
+                    The selected device filter controls which hardware rooflines are summarized here.
+                  </p>
+                </div>
               </div>
-            </header>
-            <div class="chart small" id="devicePerfChart" data-fallback="device performance"></div>
-          </article>
-          <article class="chart-panel">
+              <div class="roofline-spec-grid" id="rooflineSpecGrid" data-fallback="roofline spec cards"></div>
+            </article>
+          </div>
+          <article class="chart-panel performance-atlas-panel">
             <header>
               <div>
                 <h3>Filterable kernel atlas</h3>

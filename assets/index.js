@@ -36,6 +36,8 @@
   const devicePerfNode = document.getElementById("devicePerfChart");
   const rooflineNode = document.getElementById("rooflineChart");
   const rooflineSummaryNode = document.getElementById("rooflineSummary");
+  const rooflineReferenceSummaryNode = document.getElementById("rooflineReferenceSummary");
+  const rooflineSpecGridNode = document.getElementById("rooflineSpecGrid");
   const rooflineDetailSummaryNode = document.getElementById("rooflineDetailSummary");
   const rooflineDetailBody = document.getElementById("rooflineDetailBody");
   const explorerNode = document.getElementById("explorerChart");
@@ -176,9 +178,22 @@
   }
 
   function renderTopList(node, title, items) {
-    const card = document.createElement("article");
-    card.className = "top-card";
-    card.innerHTML = `<span class="tag">${title}</span><h3>${title}</h3>`;
+    const card = document.createElement("details");
+    card.className = "top-card top-detail";
+    const preview = items[0] ? `${items[0].source} on ${items[0].device}` : "No highlighted sources yet";
+    card.innerHTML = `
+      <summary>
+        <div class="top-summary-copy">
+          <span class="tag">${title}</span>
+          <h3>${title}</h3>
+          <p>${preview}. Expand to inspect the highlighted source-device rows.</p>
+        </div>
+        <div class="top-summary-meta">
+          <strong>${Math.min(items.length, 8)}</strong>
+          <span>entries</span>
+        </div>
+      </summary>
+    `;
     const list = document.createElement("div");
     list.className = "note-list";
 
@@ -203,6 +218,43 @@
 
     card.appendChild(list);
     node.appendChild(card);
+  }
+
+  function renderRooflineReference() {
+    const selectedPrecision = rooflinePrecision.value;
+    const secondaryPrecision = selectedPrecision === "fp32" ? "fp16" : "fp32";
+    const specs = meta.roofline_specs.filter((spec) => rooflineDevice.value === "all" || spec.device === rooflineDevice.value);
+    rooflineSpecGridNode.innerHTML = "";
+
+    if (!specs.length) {
+      rooflineReferenceSummaryNode.textContent = "No roofline reference cards match the current device filter.";
+      return;
+    }
+
+    rooflineReferenceSummaryNode.innerHTML = `
+      <strong>${specs.length}</strong> default-clock GPU reference card${specs.length === 1 ? "" : "s"}.
+      The highlighted peak metric follows the ${selectedPrecision.toUpperCase()} roofline selector.
+    `;
+
+    specs.forEach((spec) => {
+      const card = document.createElement("article");
+      card.className = "roofline-spec-card";
+      card.innerHTML = `
+        <div class="roofline-spec-head">
+          <span class="tag">${spec.device}</span>
+          <strong>${spec.label}</strong>
+        </div>
+        <p>${spec.architecture}, compute capability ${spec.compute_capability}.</p>
+        <div class="inline-metrics roofline-inline-metrics"></div>
+      `;
+      const metrics = card.querySelector(".roofline-inline-metrics");
+      metrics.append(
+        inlineMetric("bandwidth (GB/s)", spec.memory_bandwidth_gbps, 0),
+        inlineMetric(`${selectedPrecision.toUpperCase()} roof`, spec[`peak_${selectedPrecision}_tflops`], 2),
+        inlineMetric(`${secondaryPrecision.toUpperCase()} roof`, spec[`peak_${secondaryPrecision}_tflops`], 2)
+      );
+      rooflineSpecGridNode.appendChild(card);
+    });
   }
 
   function renderReadingGuide() {
@@ -408,6 +460,7 @@
     const exactRows = filteredKernelRows(rows);
     const subset = exactRows.filter((row) => Number(row.arithmetic_intensity) > 0 && Number(row.performance_tflops) > 0);
     renderRooflineDetails(rows);
+    renderRooflineReference();
 
     if (!subset.length) {
       emptyState(rooflineNode, "No floating-point kernel rows match the current filters.");
