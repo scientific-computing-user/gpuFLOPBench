@@ -165,7 +165,7 @@ main {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
   gap: 20px;
   align-items: stretch;
 }
@@ -174,8 +174,8 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 18px;
-  padding: 38px;
+  gap: 16px;
+  padding: 34px;
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   background:
@@ -200,9 +200,9 @@ main {
 
 .hero-actions {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 28px;
+  gap: 10px;
+  flex-wrap: nowrap;
+  margin-top: 24px;
 }
 
 .button {
@@ -210,10 +210,12 @@ main {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 13px 18px;
+  padding: 12px 16px;
   border-radius: 999px;
   border: 1px solid transparent;
   font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
   transition: 160ms ease;
 }
 
@@ -858,6 +860,10 @@ td span {
   .hero-notes ul,
   .reading-guide {
     grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-wrap: wrap;
   }
 
   .reading-guide .inline-metrics {
