@@ -1,0 +1,1263 @@
+{
+  "hero": {
+    "headline_metrics": [
+      {
+        "label": "benchmark entries",
+        "value": 505
+      },
+      {
+        "label": "GPUs covered",
+        "value": 4
+      },
+      {
+        "label": "profiled binaries",
+        "value": 623
+      },
+      {
+        "label": "kernel-device rows",
+        "value": 6399
+      }
+    ],
+    "subhead": "gpuFLOPBench is a multi-GPU benchmark atlas for comparing source binaries, kernel behavior, and instruction-mix structure across the profiled corpus."
+  },
+  "inventory": {
+    "totals": {
+      "benchmarks_yaml": 505,
+      "profiled_benchmarks": 369,
+      "feature_benchmarks": 325,
+      "profiled_sources": 623,
+      "feature_sources": 551,
+      "with_tests": 163
+    },
+    "models_available": [
+      {
+        "model": "cuda",
+        "count": 504
+      },
+      {
+        "model": "hip",
+        "count": 499
+      },
+      {
+        "model": "omp",
+        "count": 326
+      },
+      {
+        "model": "sycl",
+        "count": 485
+      }
+    ],
+    "categories_available": [
+      {
+        "category": "algorithms",
+        "count": 455
+      },
+      {
+        "category": "bioinformatics",
+        "count": 22
+      },
+      {
+        "category": "math",
+        "count": 14
+      },
+      {
+        "category": "ml",
+        "count": 9
+      },
+      {
+        "category": "cryptography",
+        "count": 4
+      },
+      {
+        "category": "graph",
+        "count": 3
+      },
+      {
+        "category": "imaging",
+        "count": 3
+      },
+      {
+        "category": "simulation",
+        "count": 2
+      },
+      {
+        "category": "compression",
+        "count": 1
+      },
+      {
+        "category": "matrix",
+        "count": 1
+      },
+      {
+        "category": "automotive",
+        "count": 1
+      },
+      {
+        "category": "eda",
+        "count": 1
+      },
+      {
+        "category": "machinelearning",
+        "count": 1
+      },
+      {
+        "category": "neuralnetwork",
+        "count": 1
+      }
+    ],
+    "coverage": {
+      "profiled_benchmark_ratio": 0.7307,
+      "feature_benchmark_ratio": 0.6436,
+      "feature_source_gap": 72,
+      "unmapped_profiled_benchmarks": [
+        "moe-align",
+        "moe-sum"
+      ]
+    }
+  },
+  "audit": {
+    "generated_at": "2026-03-11T00:10:56.429044+00:00",
+    "checks": [
+      {
+        "id": "hecbench-metadata",
+        "label": "HeCBench metadata base",
+        "status": "complete",
+        "detail": "505 benchmark entries parsed from benchmarks.yaml."
+      },
+      {
+        "id": "aggregated-performance",
+        "label": "Aggregated performance corpus",
+        "status": "complete",
+        "detail": "241.51M CSV available at cuda-profiling/collected-data/all-NCU-GPU-Data.csv."
+      },
+      {
+        "id": "feature-enriched-corpus",
+        "label": "IMIX-enriched feature corpus",
+        "status": "partial",
+        "detail": "551 feature-enriched sources available; 72 raw performance sources do not appear in the IMIX merge."
+      },
+      {
+        "id": "build-artifacts",
+        "label": "Local build artifacts",
+        "status": "partial",
+        "detail": "This checkout does not include build/bin outputs; runBuild.sh must be executed in the Docker/NVIDIA toolchain before artifact tests can pass."
+      },
+      {
+        "id": "agentic-tools",
+        "label": "Agentic analysis layer",
+        "status": "partial",
+        "detail": "4 helper modules still expose NotImplemented TODO stubs."
+      }
+    ],
+    "feature_gap_sources": [
+      "addBiasQKV-cuda",
+      "aligned-types-cuda",
+      "aligned-types-omp",
+      "amgmk-cuda",
+      "amgmk-omp",
+      "assert-cuda",
+      "assert-omp",
+      "asta-cuda",
+      "asta-omp",
+      "atomicReduction-cuda",
+      "atomicReduction-omp",
+      "babelstream-cuda",
+      "babelstream-omp",
+      "binomial-cuda",
+      "binomial-omp",
+      "bitpacking-cuda",
+      "bspline-vgh-cuda",
+      "bspline-vgh-omp",
+      "chemv-cuda",
+      "chemv-omp",
+      "clenergy-cuda",
+      "clenergy-omp",
+      "clock-cuda",
+      "ddbp-cuda",
+      "ddbp-omp",
+      "degrid-cuda",
+      "degrid-omp",
+      "dispatch-cuda",
+      "gpp-cuda",
+      "gpp-omp",
+      "graphExecution-cuda",
+      "grrt-cuda",
+      "grrt-omp",
+      "hexciton-cuda",
+      "hexciton-omp",
+      "hmm-cuda",
+      "ising-cuda",
+      "ising-omp",
+      "jacobi-cuda",
+      "jacobi-omp",
+      "keccaktreehash-cuda",
+      "keccaktreehash-omp",
+      "langford-cuda",
+      "langford-omp",
+      "laplace-cuda",
+      "laplace-omp",
+      "lci-cuda",
+      "lci-omp",
+      "ldpc-cuda",
+      "ldpc-omp",
+      "lid-driven-cavity-cuda",
+      "lid-driven-cavity-omp",
+      "merkle-cuda",
+      "miniWeather-cuda",
+      "miniWeather-omp",
+      "minimod-cuda",
+      "overlap-cuda",
+      "perlin-cuda",
+      "quantAQLM-cuda",
+      "segsort-cuda",
+      "sheath-cuda",
+      "sheath-omp",
+      "sph-cuda",
+      "sph-omp",
+      "ssim-cuda",
+      "streamOrderedAllocation-cuda",
+      "streamPriority-cuda",
+      "su3-cuda",
+      "su3-omp",
+      "tsne-cuda",
+      "winograd-cuda",
+      "winograd-omp"
+    ],
+    "agentic_stub_files": [
+      "gpuFLOPBench-agentic/langchain-tools/treesitter-tools/callsite.py",
+      "gpuFLOPBench-agentic/langchain-tools/treesitter-tools/identifiers.py",
+      "gpuFLOPBench-agentic/langchain-tools/treesitter-tools/includes.py",
+      "gpuFLOPBench-agentic/langchain-tools/treesitter-tools/serialization.py"
+    ]
+  },
+  "device_summary": [
+    {
+      "device": "3080",
+      "label": "NVIDIA GeForce RTX 3080",
+      "family": "Ampere",
+      "compute_capability": "sm_86",
+      "rows": 1734,
+      "benchmarks": 362,
+      "sources": 607,
+      "kernels": 1320,
+      "models": [
+        {
+          "model": "cuda",
+          "sources": 357
+        },
+        {
+          "model": "omp",
+          "sources": 250
+        }
+      ],
+      "median_total_perf": 499405366101.24176,
+      "p95_total_perf": 5588606957724.628,
+      "median_total_ai": 0.0007873940595701913,
+      "median_xtime": 203672.0,
+      "median_ipc": 0.52,
+      "median_issue_to_exec": 1.0031430317233996,
+      "median_occupancy": 992.0
+    },
+    {
+      "device": "A10",
+      "label": "NVIDIA A10",
+      "family": "Ampere",
+      "compute_capability": "sm_86",
+      "rows": 1585,
+      "benchmarks": 360,
+      "sources": 599,
+      "kernels": 1227,
+      "models": [
+        {
+          "model": "cuda",
+          "sources": 353
+        },
+        {
+          "model": "omp",
+          "sources": 246
+        }
+      ],
+      "median_total_perf": 339933500451.4318,
+      "p95_total_perf": 3629464274264.491,
+      "median_total_ai": 0.0008668794404668711,
+      "median_xtime": 316202.6666666667,
+      "median_ipc": 0.54,
+      "median_issue_to_exec": 1.003151507324654,
+      "median_occupancy": 992.0
+    },
+    {
+      "device": "A100",
+      "label": "NVIDIA A100-SXM4-40GB",
+      "family": "Ampere",
+      "compute_capability": "sm_80",
+      "rows": 1453,
+      "benchmarks": 362,
+      "sources": 610,
+      "kernels": 1164,
+      "models": [
+        {
+          "model": "cuda",
+          "sources": 356
+        },
+        {
+          "model": "omp",
+          "sources": 254
+        }
+      ],
+      "median_total_perf": 1119494142987.8247,
+      "p95_total_perf": 7438923815964.003,
+      "median_total_ai": 0.00078596047923398,
+      "median_xtime": 168096.0,
+      "median_ipc": 0.7233333333333333,
+      "median_issue_to_exec": 1.0032722420162623,
+      "median_occupancy": 1696.0
+    },
+    {
+      "device": "H100",
+      "label": "NVIDIA H100 80GB HBM3",
+      "family": "Hopper",
+      "compute_capability": "sm_90",
+      "rows": 1627,
+      "benchmarks": 368,
+      "sources": 619,
+      "kernels": 1260,
+      "models": [
+        {
+          "model": "cuda",
+          "sources": 363
+        },
+        {
+          "model": "omp",
+          "sources": 256
+        }
+      ],
+      "median_total_perf": 1715799244879.62,
+      "p95_total_perf": 13365391044847.367,
+      "median_total_ai": 0.00046752666890261804,
+      "median_xtime": 96469.33333333333,
+      "median_ipc": 0.8433333333333333,
+      "median_issue_to_exec": 1.0009566149157354,
+      "median_occupancy": 1288.0
+    }
+  ],
+  "model_matrix": [
+    {
+      "model": "cuda",
+      "available": 504,
+      "profiled": 364,
+      "feature_enriched": 320,
+      "profiled_ratio": 0.7222,
+      "feature_ratio": 0.6349
+    },
+    {
+      "model": "omp",
+      "available": 326,
+      "profiled": 259,
+      "feature_enriched": 231,
+      "profiled_ratio": 0.7945,
+      "feature_ratio": 0.7086
+    }
+  ],
+  "category_profiled": [
+    {
+      "category": "algorithms",
+      "model_type": "cuda",
+      "profiled_sources": 340,
+      "category_slug": "algorithms"
+    },
+    {
+      "category": "algorithms",
+      "model_type": "omp",
+      "profiled_sources": 246,
+      "category_slug": "algorithms"
+    },
+    {
+      "category": "bioinformatics",
+      "model_type": "cuda",
+      "profiled_sources": 8,
+      "category_slug": "bioinformatics"
+    },
+    {
+      "category": "bioinformatics",
+      "model_type": "omp",
+      "profiled_sources": 6,
+      "category_slug": "bioinformatics"
+    },
+    {
+      "category": "cryptography",
+      "model_type": "cuda",
+      "profiled_sources": 2,
+      "category_slug": "cryptography"
+    },
+    {
+      "category": "cryptography",
+      "model_type": "omp",
+      "profiled_sources": 2,
+      "category_slug": "cryptography"
+    },
+    {
+      "category": "math",
+      "model_type": "cuda",
+      "profiled_sources": 4,
+      "category_slug": "math"
+    },
+    {
+      "category": "math",
+      "model_type": "omp",
+      "profiled_sources": 1,
+      "category_slug": "math"
+    },
+    {
+      "category": "ml",
+      "model_type": "cuda",
+      "profiled_sources": 8,
+      "category_slug": "ml"
+    },
+    {
+      "category": "ml",
+      "model_type": "omp",
+      "profiled_sources": 4,
+      "category_slug": "ml"
+    },
+    {
+      "category": "unmapped",
+      "model_type": "cuda",
+      "profiled_sources": 2,
+      "category_slug": "unmapped"
+    }
+  ],
+  "top_lists": {
+    "peak_perf_sources": [
+      {
+        "source": "quant3MatMul-cuda",
+        "benchmark": "quant3MatMul",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 2,
+        "peak_total_perf": 27338787469946.367,
+        "median_total_ai": 0.002796005,
+        "median_xtime": 164240.0
+      },
+      {
+        "source": "maxFlops-omp",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 3,
+        "peak_total_perf": 26342738564443.066,
+        "median_total_ai": 23854.433988005,
+        "median_xtime": 96349002.66666667
+      },
+      {
+        "source": "maxFlops-cuda",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 3,
+        "peak_total_perf": 26243107933105.9,
+        "median_total_ai": 23963.4178882941,
+        "median_xtime": 96321162.66666667
+      },
+      {
+        "source": "epistasis-cuda",
+        "benchmark": "epistasis",
+        "category": "bioinformatics",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 26211263376536.91,
+        "median_total_ai": 7.6204620541,
+        "median_xtime": 23789461.333333332
+      },
+      {
+        "source": "michalewicz-cuda",
+        "benchmark": "michalewicz",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 22153500198821.61,
+        "median_total_ai": 0.0527378623,
+        "median_xtime": 1382506.6666666667
+      },
+      {
+        "source": "loopback-cuda",
+        "benchmark": "loopback",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 21449439760723.555,
+        "median_total_ai": 757.5299412653,
+        "median_xtime": 42605994.666666664
+      },
+      {
+        "source": "bilateral-cuda",
+        "benchmark": "bilateral",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 21125184758243.23,
+        "median_total_ai": 3.0533731029,
+        "median_xtime": 1798688.0
+      },
+      {
+        "source": "lombscargle-omp",
+        "benchmark": "lombscargle",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 20876303352228.56,
+        "median_total_ai": 2.4347368919,
+        "median_xtime": 221056.0
+      },
+      {
+        "source": "epistasis-omp",
+        "benchmark": "epistasis",
+        "category": "bioinformatics",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 20585436491507.13,
+        "median_total_ai": 10.1393582467,
+        "median_xtime": 31474197.333333332
+      },
+      {
+        "source": "loopback-omp",
+        "benchmark": "loopback",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 20116265234550.285,
+        "median_total_ai": 604.5988303572,
+        "median_xtime": 39264725.333333336
+      },
+      {
+        "source": "bilateral-omp",
+        "benchmark": "bilateral",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 3,
+        "peak_total_perf": 19907856050728.547,
+        "median_total_ai": 3.4468371522,
+        "median_xtime": 2005077.3333333333
+      },
+      {
+        "source": "atan2-cuda",
+        "benchmark": "atan2",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 3,
+        "peak_total_perf": 19658375416021.008,
+        "median_total_ai": 0.0004513936,
+        "median_xtime": 54677.3333333333
+      },
+      {
+        "source": "keogh-cuda",
+        "benchmark": "keogh",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 19508249879515.85,
+        "median_total_ai": 1.9133300571,
+        "median_xtime": 5549376.0
+      },
+      {
+        "source": "gemv-cuda",
+        "benchmark": "gemv",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 4,
+        "peak_total_perf": 19503597994847.55,
+        "median_total_ai": 0.009489837,
+        "median_xtime": 808021.3333333333
+      },
+      {
+        "source": "minkowski-omp",
+        "benchmark": "minkowski",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 19000578534258.23,
+        "median_total_ai": 34.1014828526,
+        "median_xtime": 4357845.333333333
+      },
+      {
+        "source": "marchingCubes-cuda",
+        "benchmark": "marchingCubes",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 5,
+        "peak_total_perf": 18983333850842.125,
+        "median_total_ai": 7.0762493837,
+        "median_xtime": 174613.3333333333
+      },
+      {
+        "source": "lavaMD-omp",
+        "benchmark": "lavaMD",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 18881387045560.074,
+        "median_total_ai": 3.7690455518,
+        "median_xtime": 1863797.3333333333
+      },
+      {
+        "source": "lavaMD-cuda",
+        "benchmark": "lavaMD",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 18839354861187.66,
+        "median_total_ai": 3.8352453715,
+        "median_xtime": 1876970.6666666667
+      },
+      {
+        "source": "binomial-omp",
+        "benchmark": "binomial",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 18372673797486.79,
+        "median_total_ai": 68.6679182747,
+        "median_xtime": 385930.6666666667
+      },
+      {
+        "source": "michalewicz-omp",
+        "benchmark": "michalewicz",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 17709874440556.586,
+        "median_total_ai": 0.2570668133,
+        "median_xtime": 3413034.6666666665
+      }
+    ],
+    "ai_dense_sources": [
+      {
+        "source": "maxFlops-omp",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "A100",
+        "kernel_count": 1,
+        "peak_total_perf": 7506835331947.508,
+        "median_total_ai": 101328.7022000773,
+        "median_xtime": 338037621.3333333
+      },
+      {
+        "source": "maxFlops-cuda",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "A100",
+        "kernel_count": 1,
+        "peak_total_perf": 7615840147130.5205,
+        "median_total_ai": 99371.0538164084,
+        "median_xtime": 333195978.6666667
+      },
+      {
+        "source": "maxFlops-omp",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "A10",
+        "kernel_count": 1,
+        "peak_total_perf": 7935269384269.828,
+        "median_total_ai": 38890.0739725722,
+        "median_xtime": 319785738.6666667
+      },
+      {
+        "source": "maxFlops-cuda",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "A10",
+        "kernel_count": 1,
+        "peak_total_perf": 8071160376743.541,
+        "median_total_ai": 38249.5174973433,
+        "median_xtime": 314398357.3333333
+      },
+      {
+        "source": "maxFlops-omp",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "3080",
+        "kernel_count": 2,
+        "peak_total_perf": 12324948383535.125,
+        "median_total_ai": 28484.3896242918,
+        "median_xtime": 206741642.6666667
+      },
+      {
+        "source": "maxFlops-cuda",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "3080",
+        "kernel_count": 2,
+        "peak_total_perf": 12425500660771.59,
+        "median_total_ai": 27886.4157983459,
+        "median_xtime": 204643797.3333333
+      },
+      {
+        "source": "maxFlops-cuda",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "H100",
+        "kernel_count": 3,
+        "peak_total_perf": 26243107933105.9,
+        "median_total_ai": 23963.4178882941,
+        "median_xtime": 96321162.66666667
+      },
+      {
+        "source": "maxFlops-omp",
+        "benchmark": "maxFlops",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 3,
+        "peak_total_perf": 26342738564443.066,
+        "median_total_ai": 23854.433988005,
+        "median_xtime": 96349002.66666667
+      },
+      {
+        "source": "atomicIntrinsics-cuda",
+        "benchmark": "atomicIntrinsics",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "A100",
+        "kernel_count": 1,
+        "peak_total_perf": 7107020937.402656,
+        "median_total_ai": 18278.9834419218,
+        "median_xtime": 339779072.0
+      },
+      {
+        "source": "grrt-omp",
+        "benchmark": "grrt",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "A10",
+        "kernel_count": 1,
+        "peak_total_perf": 50618935437.05172,
+        "median_total_ai": 14572.1363549131,
+        "median_xtime": 252848768.0
+      },
+      {
+        "source": "grrt-cuda",
+        "benchmark": "grrt",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "A10",
+        "kernel_count": 1,
+        "peak_total_perf": 97799525495.85632,
+        "median_total_ai": 12363.5398960083,
+        "median_xtime": 124897888.0
+      },
+      {
+        "source": "grrt-omp",
+        "benchmark": "grrt",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "A100",
+        "kernel_count": 2,
+        "peak_total_perf": 932407525898.5321,
+        "median_total_ai": 10999.8781311367,
+        "median_xtime": 30087770.666666668
+      },
+      {
+        "source": "grrt-omp",
+        "benchmark": "grrt",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "3080",
+        "kernel_count": 1,
+        "peak_total_perf": 82523124400.09315,
+        "median_total_ai": 7156.9376283278,
+        "median_xtime": 155097045.33333334
+      },
+      {
+        "source": "grrt-cuda",
+        "benchmark": "grrt",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "A100",
+        "kernel_count": 2,
+        "peak_total_perf": 1099457097468.1392,
+        "median_total_ai": 6372.6135398109,
+        "median_xtime": 23909520.0
+      },
+      {
+        "source": "atomicIntrinsics-cuda",
+        "benchmark": "atomicIntrinsics",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "A10",
+        "kernel_count": 1,
+        "peak_total_perf": 4584520023.424793,
+        "median_total_ai": 5803.9836257523,
+        "median_xtime": 409868032.0
+      },
+      {
+        "source": "surfel-omp",
+        "benchmark": "surfel",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "H100",
+        "kernel_count": 1,
+        "peak_total_perf": 16392609902750.947,
+        "median_total_ai": 4897.0729410911,
+        "median_xtime": 20240704.0
+      },
+      {
+        "source": "grrt-cuda",
+        "benchmark": "grrt",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "3080",
+        "kernel_count": 1,
+        "peak_total_perf": 159094100946.88724,
+        "median_total_ai": 4333.5234492325,
+        "median_xtime": 76776650.66666667
+      },
+      {
+        "source": "atomicIntrinsics-cuda",
+        "benchmark": "atomicIntrinsics",
+        "category": "algorithms",
+        "model_type": "cuda",
+        "device": "3080",
+        "kernel_count": 1,
+        "peak_total_perf": 8612764211.500174,
+        "median_total_ai": 1793.2541950503,
+        "median_xtime": 218170165.33333334
+      },
+      {
+        "source": "atomicIntrinsics-omp",
+        "benchmark": "atomicIntrinsics",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "A10",
+        "kernel_count": 7,
+        "peak_total_perf": 1913198300007.7207,
+        "median_total_ai": 1495.475314727,
+        "median_xtime": 3725269.3333333335
+      },
+      {
+        "source": "atomicIntrinsics-omp",
+        "benchmark": "atomicIntrinsics",
+        "category": "algorithms",
+        "model_type": "omp",
+        "device": "A100",
+        "kernel_count": 5,
+        "peak_total_perf": 3797088818689.0366,
+        "median_total_ai": 1307.4856975925,
+        "median_xtime": 2023690.6666666667
+      }
+    ]
+  },
+  "cluster_summary": {
+    "clusters": [
+      {
+        "cluster": 0,
+        "size": 876,
+        "top_op_types": [
+          {
+            "name": "integer",
+            "value": 0.49939850294969856
+          },
+          {
+            "name": "load/store",
+            "value": 0.14966703062271913
+          },
+          {
+            "name": "control",
+            "value": 0.11840010690401462
+          },
+          {
+            "name": "movement",
+            "value": 0.07977780560507713
+          }
+        ],
+        "median_total_ai": 4.569647692200624,
+        "median_ipc": 0.975,
+        "median_issue_to_exec": 1.0029042938970119,
+        "examples": [
+          {
+            "source": "quicksort-cuda",
+            "display_kernel": "_Z13lqsort_kernelIjEvPT_S1_P11work_recordIS0_E"
+          },
+          {
+            "source": "quicksort-omp",
+            "display_kernel": "_Z8GPUQSortIfEvmPT_S1__l1"
+          },
+          {
+            "source": "easyWave-omp",
+            "display_kernel": "main_l860"
+          }
+        ],
+        "centroid": {
+          "pc1": -0.17124053770496772,
+          "pc2": -0.07521790727869997
+        }
+      },
+      {
+        "cluster": 1,
+        "size": 374,
+        "top_op_types": [
+          {
+            "name": "control",
+            "value": 0.47744143111790166
+          },
+          {
+            "name": "integer",
+            "value": 0.1702464508530685
+          },
+          {
+            "name": "load/store",
+            "value": 0.1163718328240387
+          },
+          {
+            "name": "movement",
+            "value": 0.07327662125456243
+          }
+        ],
+        "median_total_ai": 1.2510605064088431,
+        "median_ipc": 0.2633333333333333,
+        "median_issue_to_exec": 1.0510254405181163,
+        "examples": [
+          {
+            "source": "ans-cuda",
+            "display_kernel": "_Z47phase3_copy_num_symbols_from_aux_to_sync_pointsjP5uint4PKj"
+          },
+          {
+            "source": "miniFE-cuda",
+            "display_kernel": "_ZN6miniFE11dyax_kernelINS_6VectorIdiiEEEEviNT_10ScalarTypeEPKS4_PS4_"
+          },
+          {
+            "source": "metropolis-cuda",
+            "display_kernel": "_Z12kernel_resetIfEvPT_iS0_"
+          }
+        ],
+        "centroid": {
+          "pc1": 0.010295827402225942,
+          "pc2": 0.37004932463074547
+        }
+      },
+      {
+        "cluster": 2,
+        "size": 517,
+        "top_op_types": [
+          {
+            "name": "integer",
+            "value": 0.6711666400768842
+          },
+          {
+            "name": "control",
+            "value": 0.08895486042240026
+          },
+          {
+            "name": "load/store",
+            "value": 0.0829132793296142
+          },
+          {
+            "name": "movement",
+            "value": 0.06029682509972695
+          }
+        ],
+        "median_total_ai": 7.399549378770904,
+        "median_ipc": 1.8500000000000003,
+        "median_issue_to_exec": 1.001497997007476,
+        "examples": [
+          {
+            "source": "vol2col-cuda",
+            "display_kernel": "_Z14vol2col_kernelIfEvlPKT_iiiiiiiiiiiiiiiiiiPS0_"
+          },
+          {
+            "source": "resize-cuda",
+            "display_kernel": "_Z15resize_bilinearItLm8EEvPT_miiPKS0_iiffb"
+          },
+          {
+            "source": "present-cuda",
+            "display_kernel": "_Z7presentiiPKhS0_PhS0_S0_S0_S0_S0_"
+          }
+        ],
+        "centroid": {
+          "pc1": -0.2959127890175983,
+          "pc2": -0.18924022842965416
+        }
+      },
+      {
+        "cluster": 3,
+        "size": 913,
+        "top_op_types": [
+          {
+            "name": "integer",
+            "value": 0.3055056041040273
+          },
+          {
+            "name": "floating point",
+            "value": 0.25582848992692125
+          },
+          {
+            "name": "load/store",
+            "value": 0.14092917501043162
+          },
+          {
+            "name": "control",
+            "value": 0.09684322350165549
+          }
+        ],
+        "median_total_ai": 4.557297229322417,
+        "median_ipc": 0.6066666666666666,
+        "median_issue_to_exec": 1.0012787723785166,
+        "examples": [
+          {
+            "source": "hybridsort-omp",
+            "display_kernel": "_Z12runMergeSortiiP6float4S0_PiS1_Pj_l1"
+          },
+          {
+            "source": "recursiveGaussian-omp",
+            "display_kernel": "_Z13RecursiveRGBAPKjPjmmffffffff_l194"
+          },
+          {
+            "source": "zoom-cuda",
+            "display_kernel": "_Z15zoom_out_kernelPKfPfiiiiiiiii"
+          }
+        ],
+        "centroid": {
+          "pc1": 0.12331922335450307,
+          "pc2": -0.0769059159822339
+        }
+      },
+      {
+        "cluster": 4,
+        "size": 623,
+        "top_op_types": [
+          {
+            "name": "integer",
+            "value": 0.281828736855185
+          },
+          {
+            "name": "control",
+            "value": 0.26605842200392615
+          },
+          {
+            "name": "load/store",
+            "value": 0.168504030858045
+          },
+          {
+            "name": "uniform datapath",
+            "value": 0.09386116986588594
+          }
+        ],
+        "median_total_ai": 2.130391355449784,
+        "median_ipc": 0.45,
+        "median_issue_to_exec": 1.0065178199972264,
+        "examples": [
+          {
+            "source": "srad-omp",
+            "display_kernel": "main_l202"
+          },
+          {
+            "source": "scan2-omp",
+            "display_kernel": "_Z9bAdditionjjPKfPf_l128"
+          },
+          {
+            "source": "channelSum-cuda",
+            "display_kernel": "_Z14ChannelSumNCHWIiLi1ELi128EEviiiPKT_PS0_S3_"
+          }
+        ],
+        "centroid": {
+          "pc1": -0.04705096464139518,
+          "pc2": 0.16432894778826443
+        }
+      },
+      {
+        "cluster": 5,
+        "size": 1048,
+        "top_op_types": [
+          {
+            "name": "integer",
+            "value": 0.3856267211724361
+          },
+          {
+            "name": "load/store",
+            "value": 0.17810336103584745
+          },
+          {
+            "name": "control",
+            "value": 0.160861118702324
+          },
+          {
+            "name": "movement",
+            "value": 0.07664159220952406
+          }
+        ],
+        "median_total_ai": 3.1969050222844375,
+        "median_ipc": 0.4983333333333333,
+        "median_issue_to_exec": 1.0031108113607372,
+        "examples": [
+          {
+            "source": "hybridsort-omp",
+            "display_kernel": "_Z10bucketSortPfS_iPiS0_ffPj_l1"
+          },
+          {
+            "source": "quicksort-cuda",
+            "display_kernel": "_Z13lqsort_kernelIfEvPT_S1_P11work_recordIS0_E"
+          },
+          {
+            "source": "quicksort-omp",
+            "display_kernel": "_Z8GPUQSortIfEvmPT_S1__l1"
+          }
+        ],
+        "centroid": {
+          "pc1": -0.0993717155408961,
+          "pc2": 0.022539635610263963
+        }
+      },
+      {
+        "cluster": 6,
+        "size": 453,
+        "top_op_types": [
+          {
+            "name": "floating point",
+            "value": 0.20016578465650547
+          },
+          {
+            "name": "control",
+            "value": 0.18391356286325095
+          },
+          {
+            "name": "integer",
+            "value": 0.1703706382736481
+          },
+          {
+            "name": "load/store",
+            "value": 0.16081998160690478
+          }
+        ],
+        "median_total_ai": 4.573324144723377,
+        "median_ipc": 0.62,
+        "median_issue_to_exec": 1.0032960535896316,
+        "examples": [
+          {
+            "source": "mandelbrot-cuda",
+            "display_kernel": "_Z6mandelPiPK16MandelParametersii"
+          },
+          {
+            "source": "md-omp",
+            "display_kernel": "_Z2mdPK7double4PS_PKiiiddd_l23"
+          },
+          {
+            "source": "pitch-cuda",
+            "display_kernel": "_Z23parallelPitched3DAccess14cudaPitchedPtriii"
+          }
+        ],
+        "centroid": {
+          "pc1": 0.16427880322037822,
+          "pc2": 0.09046263328922548
+        }
+      },
+      {
+        "cluster": 7,
+        "size": 594,
+        "top_op_types": [
+          {
+            "name": "floating point",
+            "value": 0.5099231442411227
+          },
+          {
+            "name": "integer",
+            "value": 0.15673286458587854
+          },
+          {
+            "name": "load/store",
+            "value": 0.12130665012777149
+          },
+          {
+            "name": "control",
+            "value": 0.07278669898851697
+          }
+        ],
+        "median_total_ai": 7.052572398184555,
+        "median_ipc": 0.9683333333333334,
+        "median_issue_to_exec": 1.0004534639028102,
+        "examples": [
+          {
+            "source": "ace-cuda",
+            "display_kernel": "_Z14calculateForcePA400_A400_dS1_S1_S1_dddddd"
+          },
+          {
+            "source": "marchingCubes-cuda",
+            "display_kernel": "_Z16computeMinMaxLv2PKjPf"
+          },
+          {
+            "source": "p4-cuda",
+            "display_kernel": "_Z11postprocessPKfPfS0_S0_S0_S1_S1_Piffffiiiiiff"
+          }
+        ],
+        "centroid": {
+          "pc1": 0.4134487265659471,
+          "pc2": -0.12025809211702278
+        }
+      }
+    ],
+    "op_columns": [
+      "movement",
+      "integer",
+      "synchronization",
+      "control",
+      "floating point",
+      "miscellaneous",
+      "uniform datapath",
+      "load/store",
+      "conversion",
+      "predicate",
+      "texture"
+    ]
+  },
+  "downloads": [
+    {
+      "label": "Compact source summary CSV",
+      "path": "docs/data/source-performance.csv",
+      "size_bytes": 249957
+    },
+    {
+      "label": "Compact kernel summary CSV",
+      "path": "docs/data/kernel-performance.csv",
+      "size_bytes": 787713
+    },
+    {
+      "label": "Full performance CSV",
+      "path": "cuda-profiling/collected-data/all-NCU-GPU-Data.csv",
+      "size_bytes": 241514699
+    },
+    {
+      "label": "Feature-enriched CSV",
+      "path": "cuda-profiling/collected-data/all-NCU-GPU-Data-with-IMIX.csv",
+      "size_bytes": 11240369
+    },
+    {
+      "label": "IMIX CSV",
+      "path": "cuda-profiling/collected-data/all-IMIX-Data.csv",
+      "size_bytes": 2672755
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gpuFLOPBench</title>
+    <meta
+      name="description"
+      content="gpuFLOPBench is a standalone benchmark site for exploring benchmark inventory, multi-GPU profiling coverage, kernel-level arithmetic intensity, throughput, and instruction-mix structure."
+    >
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script src="./assets/plotly-2.32.0.min.js" defer></script>
+    <script src="./data/site-data.js" defer></script>
+    <script src="./assets/site.js" defer></script>
+    <script src="./assets/index.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="brand" href="#top">
+          <div class="brand-mark">GFB</div>
+          <div class="brand-copy">
+            <strong>gpuFLOPBench</strong>
+            <span>standalone benchmark atlas</span>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="#benchmark">Benchmark</a>
+          <a href="#coverage">Coverage</a>
+          <a href="#performance">Performance</a>
+          <a href="#features">Feature space</a>
+          <a href="#explorer">Explorer</a>
+          <a href="#downloads">Downloads</a>
+          <a href="https://github.com/gregbolet/gpuFLOPBench-updated" target="_blank" rel="noreferrer">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow">GPU benchmark</div>
+        <div class="hero-grid">
+          <article class="hero-copy">
+            <span class="tag">gpuFLOPBench</span>
+            <h1>gpuFLOPBench</h1>
+            <p>
+              A multi-GPU benchmark atlas for source binaries, kernels, throughput,
+              arithmetic intensity, and instruction-mix structure across the profiled corpus.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#performance">Explore performance</a>
+              <a class="button secondary" href="#explorer">Open the built-in explorer</a>
+              <a class="button secondary" href="#downloads">Get the data</a>
+            </div>
+          </article>
+          <div class="metric-grid" id="heroMetrics" data-fallback="hero metrics"></div>
+        </div>
+        <article class="hero-notes">
+          <h2>What the benchmark shows</h2>
+          <ul>
+            <li><strong>Scale.</strong> Hundreds of benchmark source binaries and thousands of kernel-device observations.</li>
+            <li><strong>Hardware spread.</strong> Direct comparison across RTX 3080, A10, A100, and H100 GPUs.</li>
+            <li><strong>Multiple views.</strong> Inventory, throughput, arithmetic intensity, instruction mix, and source-level exploration in one page.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section" id="benchmark">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Benchmark structure</div>
+            <h2>One benchmark, multiple layers of visibility.</h2>
+            <p>
+              gpuFLOPBench is not just a single score. It exposes the benchmark from the inventory level down to
+              per-kernel behavior so that breadth and detail stay visible at the same time.
+            </p>
+          </div>
+        </div>
+        <div class="paper-grid" id="benchmarkSurfaceGrid" data-fallback="benchmark surfaces"></div>
+      </section>
+
+      <section class="section" id="coverage">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Coverage</div>
+            <h2>How broad is the benchmark?</h2>
+            <p>
+              These views summarize how the benchmark inventory maps onto the profiled corpus, across programming
+              models, benchmark categories, and GPU targets.
+            </p>
+          </div>
+        </div>
+        <div class="split-grid">
+          <article class="chart-panel">
+            <header>
+              <div>
+                <h3>Programming-model coverage</h3>
+                <p>Declared benchmark sources versus profiled and feature-enriched coverage.</p>
+              </div>
+            </header>
+            <div class="chart small" id="modelCoverageChart" data-fallback="model coverage"></div>
+          </article>
+          <article class="chart-panel">
+            <header>
+              <div>
+                <h3>Category distribution</h3>
+                <p>The profiled source binaries by benchmark category and programming model.</p>
+              </div>
+            </header>
+            <div class="chart small" id="categoryCoverageChart" data-fallback="category coverage"></div>
+          </article>
+        </div>
+        <div class="device-card-grid" id="deviceCards" style="margin-top: 18px;" data-fallback="device cards"></div>
+      </section>
+
+      <section class="section" id="performance">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Performance space</div>
+            <h2>Arithmetic intensity and throughput, kernel by kernel.</h2>
+            <p>
+              The performance views below are built from the Nsight Compute profiling corpus and keep the benchmark
+              interactive at the kernel level rather than reducing it to a single leaderboard.
+            </p>
+          </div>
+        </div>
+        <div class="split-grid">
+          <article class="chart-panel">
+            <header>
+              <div>
+                <h3>Per-device overview</h3>
+                <p>Source counts and median throughput by GPU target.</p>
+              </div>
+            </header>
+            <div class="chart small" id="devicePerfChart" data-fallback="device performance"></div>
+          </article>
+          <article class="chart-panel">
+            <header>
+              <div>
+                <h3>Filterable kernel atlas</h3>
+                <p id="rooflineSummary" class="muted">Loading performance summary...</p>
+              </div>
+            </header>
+            <div class="control-row">
+              <div class="field">
+                <label for="rooflineDevice">device</label>
+                <select id="rooflineDevice">
+                  <option value="all">all devices</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="rooflineModel">model</label>
+                <select id="rooflineModel">
+                  <option value="all">all models</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="rooflineCategory">category</label>
+                <select id="rooflineCategory">
+                  <option value="all">all categories</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart" id="rooflineChart" data-fallback="roofline chart"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Feature space</div>
+            <h2>Instruction-mix structure across the benchmark.</h2>
+            <p>
+              The feature-space view shows how kernels cluster when normalized op-type behavior is projected into a
+              compact 2D view. It is meant to expose structure, not hide it.
+            </p>
+          </div>
+        </div>
+        <div class="split-grid">
+          <article class="chart-panel">
+            <header>
+              <div>
+                <h3>Cluster projection</h3>
+                <p id="featureSummary" class="muted">Loading feature summary...</p>
+              </div>
+            </header>
+            <div class="control-row">
+              <div class="field">
+                <label for="featureDevice">device</label>
+                <select id="featureDevice">
+                  <option value="all">all devices</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="featureModel">model</label>
+                <select id="featureModel">
+                  <option value="all">all models</option>
+                </select>
+              </div>
+            </div>
+            <div class="chart" id="featureChart" data-fallback="feature chart"></div>
+          </article>
+          <article class="panel cluster-panel">
+            <div class="section-head section-head-tight">
+              <div>
+                <h2 style="font-size: 28px;">Representative cluster signatures</h2>
+                <p>Open a cluster to inspect its dominant operation blend and median behavior without letting this panel take over the page.</p>
+              </div>
+            </div>
+            <div class="cluster-stack" id="clusterGrid" data-fallback="cluster cards"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="explorer">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Source explorer</div>
+            <h2>Search the benchmark without leaving the page.</h2>
+            <p>
+              Filter the source-level view by device, programming model, category, or benchmark name. The plot and the
+              table move together so the outliers stay visible.
+            </p>
+          </div>
+        </div>
+        <article class="chart-panel">
+          <div class="control-row">
+            <div class="field">
+              <label for="explorerDevice">device</label>
+              <select id="explorerDevice">
+                <option value="all">all devices</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="explorerModel">model</label>
+              <select id="explorerModel">
+                <option value="all">all models</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="explorerCategory">category</label>
+              <select id="explorerCategory">
+                <option value="all">all categories</option>
+              </select>
+            </div>
+            <div class="field" style="flex: 1 1 280px;">
+              <label for="explorerSearch">search</label>
+              <input id="explorerSearch" type="search" placeholder="source or benchmark name">
+            </div>
+          </div>
+          <p id="sourceCountSummary" class="muted" style="margin-top: 16px;">Loading source explorer...</p>
+          <div class="chart" id="explorerChart" data-fallback="source explorer chart"></div>
+        </article>
+
+        <div class="table-shell" style="margin-top: 18px;">
+          <div class="table-scroll">
+            <table>
+              <thead>
+                <tr>
+                  <th>source</th>
+                  <th>device</th>
+                  <th>model</th>
+                  <th>kernels</th>
+                  <th>peak perf</th>
+                  <th>median AI</th>
+                  <th>median time</th>
+                  <th>rank</th>
+                </tr>
+              </thead>
+              <tbody id="sourceTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="leaders">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Notable slices</div>
+            <h2>High-throughput and AI-dense source binaries.</h2>
+            <p>
+              These lists are not meant to replace the interactive explorer. They are here to spotlight strong benchmark
+              examples that are easy to reference quickly.
+            </p>
+          </div>
+        </div>
+        <article class="callout reading-guide">
+          <div>
+            <span class="tag">reading guide</span>
+            <h3>How to read the benchmark</h3>
+            <p>
+              Start with coverage to understand breadth, move to the kernel atlas for cross-device behavior, use the
+              feature space to understand structure, and then drill into the source explorer for concrete benchmark slices.
+            </p>
+          </div>
+          <div class="inline-metrics" id="readingGuideMetrics"></div>
+        </article>
+        <div class="top-grid">
+          <div id="peakPerfList" data-fallback="peak performance list"></div>
+          <div id="aiDenseList" data-fallback="ai dense list"></div>
+        </div>
+      </section>
+
+      <section class="section" id="downloads">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Downloads</div>
+            <h2>Data and artifacts.</h2>
+            <p>
+              The page uses compact derived files for fast interaction and links straight back to the larger benchmark
+              artifacts when you want the raw repository data.
+            </p>
+          </div>
+        </div>
+        <div class="downloads-grid" id="downloadsGrid" data-fallback="download cards"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>
+        <strong>gpuFLOPBench</strong><br>
+        Standalone benchmark site generated from the repository artifacts in <span class="mono">docs/data/</span>.
+      </div>
+      <div>
+        <strong>Last generated</strong><br>
+        <span id="lastUpdated">Loading...</span>
+      </div>
+    </footer>
+  </body>
+</html>
