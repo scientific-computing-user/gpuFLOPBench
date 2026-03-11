@@ -136,17 +136,25 @@
               </header>
               <div class="chart compact-chart" id="devicePerfChart" data-fallback="device performance"></div>
             </article>
-            <article class="panel roofline-reference-panel">
-              <div class="section-head section-head-tight">
-                <div>
+            <details class="panel roofline-reference-panel roofline-reference-detail">
+              <summary>
+                <div class="roofline-reference-copy">
                   <h3>Default-clock roofline reference</h3>
                   <p id="rooflineReferenceSummary" class="muted">
                     The selected device filter controls which hardware rooflines are summarized here.
                   </p>
                 </div>
+                <div class="top-summary-meta">
+                  <strong id="rooflineReferenceCount">0</strong>
+                  <span>GPUs</span>
+                </div>
+              </summary>
+              <div class="roofline-reference-body">
+                <div class="roofline-spec-scroll">
+                  <div class="roofline-spec-grid" id="rooflineSpecGrid" data-fallback="roofline spec cards"></div>
+                </div>
               </div>
-              <div class="roofline-spec-grid" id="rooflineSpecGrid" data-fallback="roofline spec cards"></div>
-            </article>
+            </details>
           </div>
           <article class="chart-panel performance-atlas-panel">
             <header>

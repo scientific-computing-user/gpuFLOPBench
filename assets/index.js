@@ -37,6 +37,7 @@
   const rooflineNode = document.getElementById("rooflineChart");
   const rooflineSummaryNode = document.getElementById("rooflineSummary");
   const rooflineReferenceSummaryNode = document.getElementById("rooflineReferenceSummary");
+  const rooflineReferenceCountNode = document.getElementById("rooflineReferenceCount");
   const rooflineSpecGridNode = document.getElementById("rooflineSpecGrid");
   const rooflineDetailSummaryNode = document.getElementById("rooflineDetailSummary");
   const rooflineDetailBody = document.getElementById("rooflineDetailBody");
@@ -225,16 +226,19 @@
     const secondaryPrecision = selectedPrecision === "fp32" ? "fp16" : "fp32";
     const specs = meta.roofline_specs.filter((spec) => rooflineDevice.value === "all" || spec.device === rooflineDevice.value);
     rooflineSpecGridNode.innerHTML = "";
+    rooflineReferenceCountNode.textContent = String(specs.length);
 
     if (!specs.length) {
       rooflineReferenceSummaryNode.textContent = "No roofline reference cards match the current device filter.";
       return;
     }
 
-    rooflineReferenceSummaryNode.innerHTML = `
-      <strong>${specs.length}</strong> default-clock GPU reference card${specs.length === 1 ? "" : "s"}.
-      The highlighted peak metric follows the ${selectedPrecision.toUpperCase()} roofline selector.
-    `;
+    const scopeLabel =
+      rooflineDevice.value === "all"
+        ? "All devices"
+        : `${specs[0].label}`;
+    rooflineReferenceSummaryNode.textContent =
+      `${scopeLabel}. ${selectedPrecision.toUpperCase()} roofs at default clocks. Expand for the hardware cards.`;
 
     specs.forEach((spec) => {
       const card = document.createElement("article");

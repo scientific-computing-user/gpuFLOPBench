@@ -593,7 +593,50 @@ main {
 }
 
 .roofline-reference-panel {
+  padding: 0;
+  overflow: hidden;
+}
+
+.roofline-reference-detail summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
   padding: 18px;
+}
+
+.roofline-reference-detail summary::-webkit-details-marker {
+  display: none;
+}
+
+.roofline-reference-detail[open] summary {
+  background: rgba(145, 183, 255, 0.04);
+  border-bottom: 1px solid rgba(145, 183, 255, 0.08);
+}
+
+.roofline-reference-copy {
+  min-width: 0;
+}
+
+.roofline-reference-copy h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.roofline-reference-copy p {
+  margin: 8px 0 0;
+}
+
+.roofline-reference-body {
+  padding: 0 18px 18px;
+}
+
+.roofline-spec-scroll {
+  max-height: 240px;
+  overflow: auto;
+  padding-top: 18px;
 }
 
 .roofline-spec-grid {
@@ -872,6 +915,11 @@ td span {
 
   .roofline-spec-grid {
     grid-template-columns: 1fr;
+  }
+
+  .roofline-reference-detail summary {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .citation-actions {
