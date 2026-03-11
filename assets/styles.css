@@ -358,17 +358,14 @@ main {
   display: grid;
   grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.35fr);
   gap: 20px;
-  align-items: stretch;
+  align-items: start;
   margin-bottom: 12px;
 }
 
 .performance-side-stack {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
   gap: 20px;
   align-content: start;
-  min-height: 0;
-  height: 100%;
 }
 
 .section-head-tight {
@@ -599,9 +596,6 @@ main {
 .roofline-reference-panel {
   padding: 0;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
 }
 
 .roofline-reference-detail summary {
@@ -671,15 +665,12 @@ main {
 
 .roofline-reference-body {
   padding: 0 18px 18px;
-  flex: 1 1 auto;
-  min-height: 0;
 }
 
 .roofline-spec-scroll {
-  height: 100%;
+  max-height: 240px;
   overflow: auto;
   padding-top: 18px;
-  min-height: 0;
 }
 
 .roofline-spec-grid {
@@ -958,20 +949,6 @@ td span {
 
   .roofline-spec-grid {
     grid-template-columns: 1fr;
-  }
-
-  .performance-side-stack {
-    grid-template-rows: auto auto;
-    height: auto;
-  }
-
-  .roofline-reference-body {
-    flex: 0 0 auto;
-  }
-
-  .roofline-spec-scroll {
-    height: auto;
-    max-height: 280px;
   }
 
   .roofline-reference-detail summary {
