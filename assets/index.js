@@ -39,6 +39,10 @@
   const rooflineReferenceSummaryNode = document.getElementById("rooflineReferenceSummary");
   const rooflineReferencePreviewNode = document.getElementById("rooflineReferencePreview");
   const rooflineReferenceCountNode = document.getElementById("rooflineReferenceCount");
+  const devicePerfPanelNode = document.getElementById("devicePerfPanel");
+  const rooflineReferencePanelNode = document.getElementById("rooflineReferencePanel");
+  const rooflineReferenceBodyNode = document.getElementById("rooflineReferenceBody");
+  const rooflineAtlasPanelNode = document.getElementById("rooflineAtlasPanel");
   const rooflineSpecGridNode = document.getElementById("rooflineSpecGrid");
   const rooflineDetailSummaryNode = document.getElementById("rooflineDetailSummary");
   const rooflineDetailBody = document.getElementById("rooflineDetailBody");
@@ -280,6 +284,34 @@
     });
   }
 
+  function syncPerformancePanelHeights() {
+    if (!devicePerfPanelNode || !rooflineReferencePanelNode || !rooflineReferenceBodyNode || !rooflineAtlasPanelNode) {
+      return;
+    }
+
+    if (window.innerWidth <= 1120) {
+      rooflineReferencePanelNode.style.height = "";
+      rooflineReferenceBodyNode.style.maxHeight = "";
+      return;
+    }
+
+    const stackNode = devicePerfPanelNode.parentElement;
+    const gapValue = stackNode ? window.getComputedStyle(stackNode).rowGap || window.getComputedStyle(stackNode).gap : "20px";
+    const gap = Number.parseFloat(gapValue) || 20;
+    const atlasHeight = rooflineAtlasPanelNode.getBoundingClientRect().height;
+    const overviewHeight = devicePerfPanelNode.getBoundingClientRect().height;
+    const targetHeight = Math.max(280, Math.floor(atlasHeight - overviewHeight - gap));
+
+    rooflineReferencePanelNode.style.height = `${targetHeight}px`;
+    rooflineReferenceBodyNode.style.maxHeight = `${Math.max(180, targetHeight - 142)}px`;
+  }
+
+  function queuePerformancePanelSync() {
+    window.requestAnimationFrame(function () {
+      window.requestAnimationFrame(syncPerformancePanelHeights);
+    });
+  }
+
   function renderReadingGuide() {
     const uniqueCategories = new Set(meta.category_profiled.map((entry) => entry.category)).size;
     readingGuideMetricsNode.append(
@@ -419,6 +451,7 @@
         },
       })
     );
+    queuePerformancePanelSync();
   }
 
   function matchesRooflineFilters(row) {
@@ -494,6 +527,7 @@
     if (!subset.length) {
       emptyState(rooflineNode, "No floating-point kernel rows match the current filters.");
       rooflineSummaryNode.textContent = "";
+      queuePerformancePanelSync();
       return;
     }
 
@@ -564,6 +598,7 @@
       median performance <strong>${formatNumber(perfValues[Math.floor(perfValues.length / 2)], 4)} TFLOP/s</strong>.
       Dashed lines show the ${selectedPrecision.toUpperCase()} theoretical roofline at default device clocks.
     `;
+    queuePerformancePanelSync();
   }
 
   function filteredSourceRows(rows) {
@@ -687,6 +722,7 @@
     renderRoofline(kernelRows);
     renderExplorer(sourceRows);
     lastUpdatedNode.textContent = new Date(meta.audit.generated_at).toLocaleString();
+    window.addEventListener("resize", queuePerformancePanelSync);
   }
 
   init();

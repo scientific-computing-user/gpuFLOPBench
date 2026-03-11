@@ -598,7 +598,7 @@ main {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: clamp(360px, 32vw, 430px);
+  min-height: 280px;
 }
 
 .roofline-reference-head {
@@ -948,6 +948,7 @@ td span {
 
   .roofline-reference-panel {
     height: auto;
+    min-height: 0;
   }
 
   .roofline-reference-head {
